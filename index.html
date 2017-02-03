@@ -2,12 +2,57 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Delius+Swash+Caps|Crafty+Girls|Gloria+Hallelujah" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<title>Animal Hangman</title>
 </head>
 <body>
-	<h1>Animal Hangman</h1>
-	<h2>Hang on the wildlife side.</h2>
+	<div class="container">
+		<div class="jumbotron text-center clearly swish">
+			<h1>Animal Hangman</h1>
+			<h2>Hang on the wildlife side.</h2>
+		</div>
+		<div class="main"><!--Main area.-->
+			<div class="row">
+				<div class="col-xs-12 col-md-7 text-lowercase playarea">
+					<div class="word"></div>
+				</div>
+				<div class="col-xs-12 col-md-5 pics"></div>
+			</div>
+			<div class="row">
+				<div class="silly">
+					<div class="col-xs-4 col-md-4 nuts"><!--Last tag was to help write the "dialogue"-->
+						<br><br>
+						<p class="swish">I see something to the left. Is that an animal?</p>
+						<p class="flower">I can't tell. Maybe?</p>
+						<p class="nada">I think it is... And it scampered. Anyone get a good look?</p>
+						<p class="flower">Nope.</p>
+						<p class="swish">Sorry.</p>
+						<p class="nada">Nuts.</p>
+					</div>
+					<div class="col-xs-4 col-md-4 text-justify disapproving"><!--Last tag was to help me write the "dialogue".-->
+						<p class="flower">I can't believe you're playing hangman</p>
+						<p class="nada text-left>">Why not? It's fun and quiet. And nothing's going to show up until those noisy picnickers leave.</p>
+						<p class="flower wiggle">Still....</p>
+						<p class="swish">And it's <strong>my</strong> notebook. I can play hangman if I want.</p>
+					</div>
+					<div class="col-xs-4 col-md-4 text-justify sunscreen"><!--Last tag was to help me write the "dialogue".-->
+						<br>
+						<p class="nada">We need to add something to the fieldwork list.</p>
+						<p class="flower wobble">Oh? What are we missing?</p>
+						<p class="nada scootch">Sunscreen. Or at least a better hat for me.</p>
+						<p class="swish">Oh, <strong>ouch!</strong> I've got sunscreen and aloe in the car.</p>
+						<p class="flower wobble">I'll go get it, I'm closest.</p>
+						<p class="swish scootch">Grab some water, too!</p>
+						<p class="nada">Thanks.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
