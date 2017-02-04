@@ -15,12 +15,29 @@
 			<h1>Animal Hangman</h1>
 			<h2>Hang on the wildlife side.</h2>
 		</div>
-		<div class="main"><!--Main area.-->
+		<div class="main playarea"><!--Main area.-->
 			<div class="row">
-				<div class="col-xs-12 col-md-7 text-lowercase playarea">
-					<div class="word"></div>
+				<div class="col-xs-12 col-md-7 text-lowercase">
+					<div class="row">
+						<div class="col-xs-12 col-md-12 gallows">
+							<img class="img-responsive hangman" src="assets/images/progression/hangman0.png" width="455" height="230">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-6 text-center swish mystery"></div>
+						<div class="col-xs-12 col-md-6 text-center swish tracking">
+							<p>Wins: <span id="win">0</span></p>
+							<br>
+							<p>Chances: <span id="chances">14</span></p>
+							<br>
+							<p>Wrong Letters: <span id="bad"></span></p>
+						</div>
+					</div>
 				</div>
-				<div class="col-xs-12 col-md-5 pics"></div>
+				<div class="col-xs-12 col-md-5 pics">
+					<p><span id="boo"></span></p>
+					<p><span id="yay"></span></p>
+				</div>
 			</div>
 			<div class="row">
 				<div class="silly">

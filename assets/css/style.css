@@ -7,6 +7,27 @@ body{
 	background-color:transparent !important;
 }
 
+/* img{
+	margin-left: auto;
+    margin-right: auto;
+} */
+
+.playarea{
+	margin:0;
+	padding:0;
+}
+
+.tracking{
+	text-align: justify;
+}
+
+/* .pics img{
+	height: 3em;
+	width: 3em;
+	margin: 0;
+	padding: 0;
+} */
+
 .silly{
 	font-size: 16px;
 }
