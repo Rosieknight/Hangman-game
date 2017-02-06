@@ -1,32 +1,70 @@
-var medAnimals = ["tortise", "alligator", "iguana", "turtle", "crocodile", "chimpanzee", "shrimp", "beluga", "shark", "emu", "wallaby", "rabbit", "raven", "pigeon", "narwhal", "lobster", "rhino", "elephant", "panda", "penguin", "chicken", "hawk", "grizzly", "koala", "cobra", "asp", "bear", "python", "capybara", "earthworm", "salmon", "kangaroo", "tiger", "dolphin", "hyena", "giraffe", "sparrow", "hippopotamus", "caribou", "magpie", "swordfish", "kingfisher", "kookaburra", "wombat", "vulture", "dingo", "zebra", "okapi", "moose", "mouse", "gazelle", "sandpiper", "panther", "ibis", "ibex", "lynx", "bobcat", "leopard", "turkey", "jellyfish", "puffin", "octopus", "rattlesnake", "cassowary", "zooplankton", "krill", "osprey", "mongoose", "ferret", "salamander", "scarab", "viper", "starling", "wren", "pheasant", "donkey", "mule", "horse", "scorpion", "antelope", "kiwi", "platypuss", "flamingo", "possum", "partridge", "cockatoo", "cockatiel", "armadillo", "aardwolf", "aardvark", "shrike", "killdeer", "cormorant", "bluejay", "yellowjacket", "snapper", "dragonfly", "ostrich", "lamprey", "meerkat", "gnu"];
+//Word Bank
+var medAnimals = ["tortise", "alligator", "iguana", "turtle",
+"crocodile", "chimpanzee", "shrimp", "beluga", "shark", "emu",
+"wallaby",  "rabbit", "raven", "pigeon", "narwhal", "lobster",
+"rhino", "elephant", "panda", "penguin", "chicken", "hawk", "grizzly",
+"koala", "cobra", "asp", "bear", "python", "capybara", "earthworm",
+"salmon", "kangaroo", "tiger", "dolphin", "hyena", "giraffe",
+"sparrow", "hippopotamus", "caribou", "magpie", "swordfish",
+"kingfisher", "kookaburra", "wombat", "vulture", "dingo", "zebra",
+"okapi", "moose", "mouse", "gazelle", "sandpiper", "panther", "ibis",
+"ibex", "lynx", "bobcat", "leopard", "turkey", "jellyfish", "puffin",
+"octopus", "rattlesnake", "cassowary", "zooplankton", "krill",
+"osprey", "mongoose", "ferret", "salamander", "scarab", "viper",
+"starling", "wren", "pheasant", "donkey", "mule", "horse", "scorpion",
+"antelope", "kiwi", "platypuss", "flamingo", "possum", "partridge",
+"cockatoo", "cockatiel", "armadillo", "aardwolf", "aardvark",
+"shrike", "killdeer", "cormorant", "bluejay", "yellowjacket",
+"snapper", "dragonfly", "ostrich", "lamprey", "meerkat", "gnu"];
 
+//random word chosen
 var pick =6; /*(Math.floor(Math.random()*101));*/
 console.log(medAnimals[pick]);
 var word = medAnimals[pick];
 
+//This needs to hold through multiple games 
+var win = 0; 
+var useable =["a","b","c","d","e","f","g", "h", "i", "j", "k", "l",
+"m", "n",  "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y",
+"z"];
 
-var win = 0;
+//This should reset every game
 var chances = 14;
 var hangman = 0;
-
 var pastGuess = [];
 var badGuess = [];
-var spaces = word.length;
+var space = word.length; /*This triggers the win result*/
+var hidden = word.split("");
+var spaces  = " ";
+    for (i=0; i<word.length; i++) {
 
-/*document.write(word.indexOf("e"));*/
+      spaces = spaces + "_ "
+    };
+
+var blanks=spaces.split();
+          document.querySelector('#shown').innerHTML = blanks;
+
+
+//starting on release of key
 document.onkeyup=function(){
 	var guess = event.key;
 	var isCorrect = false;
+
+//Checks that keys are valid for game purposes
+	if(useable.indexOf(guess)<0){
+		alert("You didn't pick a letter.")
+	} else {
 	if (pastGuess.indexOf(guess)>=0) {
 			alert("You have already picked that letter.")
 	} else {
 		pastGuess.push(guess);
 		console.log(pastGuess);
 
-		//Loop through word to check if guess matches.
+//Loop through word to check if guess matches.
 		for (var i = 0; i < word.length; i++) {
-		 var letter = word[i]
-		 console.log(guess + " " + letter);
+			var letter = word[i];
+		console.log(guess + " " + letter);
+
 		 if(guess===letter){ /*This if function is still part of the for loop.*/
 		 	console.log("That's right!");
 		 	isCorrect = true;
@@ -34,24 +72,47 @@ document.onkeyup=function(){
 		 console.log(letter);
 		}
 		console.log("isCorrect"+ isCorrect);
-		
+//Positive result		
 		if (isCorrect===true) {
-			console.log("You got it!");
-			spaces--;
+			var count = 0;
+		 	for (i=0; i<word.length; i++){
+		 		if(hidden[i].indexOf(guess) > -1){
+		 			count++;
+		 			console.log(i);
+/*		 			blanks = blanks + hidden[i] + " "; This is the issue.*/
+				 	document.getElementById("shown").innerHTML = blanks;
+				 	space=space-count;
+				 	console.log(space);
+				} else{
+				 	blanks;
+				}
+
+		 	}
 		} else {
+//Negative result
 			console.log("That's wrong!")
 			badGuess.push(guess);
-			console.log(badGuess);
+			document.getElementById("bad").innerHTML = badGuess;
 			chances--;
+			document.getElementById("chances").innerHTML =  chances;
 			hangman++;
+			document.querySelector("#gallows").innerHTML = "<img class='img-responsive' src='assets/images/progression/hangman" + hangman + ".png' width='455' height='230'>";
+			
 		}
 		}
-	/*}*/
-	var html = "<img class='img-responsive hangman' src='assets/images/progression/hangman" + hangman + ".png' width='455' height='230'" + 
-	"<p>Wins: " + win + "</p>" + 
-	"<p>Chances: " + chances + "</p>" +
-	"<p>Wrong Letters: " + badGuess + "</p>"
+	}
+//Change things in HTML according to result of loops.
+if (chances===0) {
+	document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Lose</p>";
+}
 
-
-	document.querySelector(".playarea").innerHTML = html;
+if (space===0) {
+	alert("You win")
+	document.querySelector("#huzzah").innerHTML = "<p class='h1 lead strong>You Win</p>";
+	//The above will not register in the game.
+	win++;
+	document.querySelector("#win").innerHTML= win;
+	document.getElementById('pics').innerHTML="<img class='img-responsive' src='assets/images/" + word + ".jpg' width='455' height='230'>";
+}	
+	
 }

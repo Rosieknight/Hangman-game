@@ -7,26 +7,26 @@ body{
 	background-color:transparent !important;
 }
 
-/* img{
-	margin-left: auto;
-    margin-right: auto;
-} */
-
-.playarea{
+.playarea img{
+	display: inline-block;
+	float: left;
+	clear: right;
 	margin:0;
+}
+
+.mystery p{
+	margin:auto;
 	padding:0;
+}
+
+#yay img{
+	display: block;
 }
 
 .tracking{
 	text-align: justify;
+	font-size: 16px;
 }
-
-/* .pics img{
-	height: 3em;
-	width: 3em;
-	margin: 0;
-	padding: 0;
-} */
 
 .silly{
 	font-size: 16px;
