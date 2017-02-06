@@ -18,17 +18,11 @@ var medAnimals = ["tortise", "alligator", "iguana", "turtle",
 "snapper", "dragonfly", "ostrich", "lamprey", "meerkat", "gnu"];
 
 //random word chosen
+//This should reset every game
 var pick =6; /*(Math.floor(Math.random()*101));*/
 console.log(medAnimals[pick]);
 var word = medAnimals[pick];
 
-//This needs to hold through multiple games 
-var win = 0; 
-var useable =["a","b","c","d","e","f","g", "h", "i", "j", "k", "l",
-"m", "n",  "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y",
-"z"];
-
-//This should reset every game
 var chances = 14;
 var hangman = 0;
 var pastGuess = [];
@@ -43,6 +37,13 @@ var spaces  = " ";
 
 var blanks=spaces.split();
           document.querySelector('#shown').innerHTML = blanks;
+
+
+//This needs to hold through multiple games 
+var win = 0; 
+var useable =["a","b","c","d","e","f","g", "h", "i", "j", "k", "l",
+"m", "n",  "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y",
+"z"];
 
 
 //starting on release of key
@@ -79,7 +80,7 @@ document.onkeyup=function(){
 		 		if(hidden[i].indexOf(guess) > -1){
 		 			count++;
 		 			console.log(i);
-/*		 			blanks = blanks + hidden[i] + " "; This is the issue.*/
+		 			blanks = blanks + hidden[i] + " "; /*This is the issue.*/
 				 	document.getElementById("shown").innerHTML = blanks;
 				 	space=space-count;
 				 	console.log(space);
@@ -101,18 +102,24 @@ document.onkeyup=function(){
 		}
 		}
 	}
-//Change things in HTML according to result of loops.
-if (chances===0) {
-	document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Lose</p>";
+
+	//Change things in HTML according to result of loops.
+	if (chances===0) {
+		document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Lose</p>";
+	}
+
+	if (space===0) {
+		document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Win</p>";
+		
+		win++;
+		
+		document.querySelector("#win").innerHTML= win;
+		document.getElementById('pics').innerHTML="<img class='img-responsive' src='assets/images/" + 
+		word + ".jpg' width='455' height='230'>";
+	}	
 }
 
-if (space===0) {
-	alert("You win")
-	document.querySelector("#huzzah").innerHTML = "<p class='h1 lead strong>You Win</p>";
-	//The above will not register in the game.
-	win++;
-	document.querySelector("#win").innerHTML= win;
-	document.getElementById('pics').innerHTML="<img class='img-responsive' src='assets/images/" + word + ".jpg' width='455' height='230'>";
-}	
-	
-}
+
+
+
+

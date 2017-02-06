@@ -1,0 +1,46 @@
+Issues:
+1) Can't get correct letters to display properly in hangman area.
+
+a) The letters display in order typed, but after the underscores(game.js, specifically line 83)
+b) The correct letter displays once, with nothing following it.
+c) The letters display after the underscors in apparently the correct order (in the testing files, the letter is set).
+d) The letter displays only once with a single underscore following it.
+e) The letter displays only once with several underscores following it.
+f) The letter displays only once after several underscores and with one following it.
+g) The letter displays twice, right next to eachother, followed by several underscores.
+
+What I have tried:
+a) blanks = blanks + hidden[i] + " "; //This is line 83 from game.js
+b) blanks = word[i] + " "; (With or without the " ";)
+c) blanks = blanks + word[i]; //Currenly how the testing javascript is.
+d) blanks[i] = letter; blanks[i] = letter + " "; blanks += letter;
+e) blanks[i] = letter + blanks;
+f) blanks[i] += letter;
+g) blanks = word[i] + blanks;
+h) Creating a new array with the indeices of the letter pushed into it and doing this: blanks[spot] = word[i]
+i) Looking for other js hangman games to see I) if I can see their code II) if they are using just js III) if I can follow their logic. 
+i) Researching different ways of replacing parts of strings, though it appears they'll end up replacing the whole array of underscores.
+j) Trying to find a way to replace part of an array with the corresponding part of an array or string that will work with a variable. This generally ends up with one of the listed or the wrong letter displayed.
+
+What I want:
+Help. At minimum, getting pointed in the right direction. More realistically, an idea of what I might need to scrap or alter to get this working.
+
+What I DO NOT want:
+You to code it for me. (I'm lost, but I CAN get there.)
+
+2) The reset button
+
+a) I know it's a function.
+b) I know the variables it needs to reset.
+c) It looks like it need to be outside of the on.click function.
+d) One of the ones I had pulled a new word, but didn't clear the display.
+e) Another gave me an undefined error.
+f) And the last ate my play area.
+g) I've hit google and most of the sources I've found use jQuery or are for a form, same with js hangman games where I can see the code.
+h) I've tried Stack Overflow, youTube, a public github repo that's doing the same project, webdeveloper.com, www.dummies.com, w3schools.com, HTML5 Game Devs Forum, JSFiddle, Khan Academy, and CSS Tricks (nothing there).
+
+What I want:
+A clearer explination. No, seriously. I'm not sure how you can call it intially if you put it around the variable that need to reset. I keep getting undefined errors and I need to leave for work soon.
+
+What I DO NOT want:
+Again, don't code it for me. I'm confused, but I NEED to do this on my own.
