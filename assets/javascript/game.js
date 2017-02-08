@@ -25,17 +25,20 @@ var useable =["a","b","c","d","e","f","g", "h", "i", "j", "k", "l",
 
 window.onload = replay;
 
-/*.onclick = replay;*/
 
 //random word chosen
 //This should reset every game
 function replay(){
 	var pick = (Math.floor(Math.random()*101));
+	document.getElementById('boo').innerHTML = "<p class='h1 lead strong'></p>";
 	var chances = 14;
+	document.getElementById("chances").innerHTML =  chances;
 	var hangman = 0;
+	document.querySelector("#gallows").innerHTML = "<img class='img-responsive' src='assets/images/progression/hangman" + hangman + ".png' width='455' height='230'>";
 	var goodGuess = [];
 	var pastGuess = [];
 	var badGuess = [];
+	document.getElementById("bad").innerHTML = badGuess;
 	console.log(medAnimals[pick]);
 	var word = medAnimals[pick];
 	var space = word.length; /*This triggers the win result*/
@@ -51,10 +54,7 @@ function replay(){
 
 
  //starting on release of key
-	document.onkeyup=function(){
-		/*game.word;
-		game.hangman;
-		game.goodGuess;*/
+	document.onkeyup=function game(){
 		var guess = event.key;
 		var isCorrect = false;
 
@@ -118,14 +118,17 @@ function replay(){
 		//Change things in HTML according to result of loops.
 		if (chances===0) {
 			document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Lose</p>";
-
+			document.onkeyup = function (e) {
+    			e.preventDefault();		
+  			}
 		}
 
 		if (space===0) {
 			document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Win</p>";
-			
 			win++;
-			
+			document.onkeyup = function (e) {
+    			e.preventDefault();		
+  			}
 			document.querySelector("#win").innerHTML= win;
 			document.getElementById('pics').innerHTML="<img class='img-responsive' src='assets/images/" + 
 			word + ".jpg' width='455' height='230'>";
@@ -133,7 +136,4 @@ function replay(){
 	}
 }
 
-
-
-
-
+document.getElementById("button").onclick=replay;
