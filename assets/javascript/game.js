@@ -1,5 +1,5 @@
 //Word Bank
-var medAnimals = ["tortise", "alligator", "iguana", "turtle",
+var medAnimals = ["tortoise", "alligator", "iguana", "turtle",
 "crocodile", "chimpanzee", "shrimp", "beluga", "shark", "emu",
 "wallaby",  "rabbit", "raven", "pigeon", "narwhal", "lobster",
 "rhino", "elephant", "panda", "penguin", "chicken", "hawk", "grizzly",
@@ -118,6 +118,7 @@ function replay(){
 		//Change things in HTML according to result of loops.
 		if (chances===0) {
 			document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Lose</p>";
+
 		}
 
 		if (space===0) {
