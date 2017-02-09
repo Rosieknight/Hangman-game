@@ -54,7 +54,7 @@ function replay(){
 
 
  //starting on release of key
-	document.onkeyup=function game(){
+	document.onkeyup=function (event){
 		var guess = event.key;
 		var isCorrect = false;
 
