@@ -117,7 +117,7 @@ function replay(){
 
 		//Change things in HTML according to result of loops.
 		if (chances===0) {
-			document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Lose</p>";
+			document.getElementById('boo').innerHTML = "<p class='h1 lead strong'>You Lose. The animal was </p>" + word;
 			document.onkeyup = function (e) {
     			e.preventDefault();		
   			}
